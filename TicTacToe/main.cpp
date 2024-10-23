@@ -1,28 +1,12 @@
-#include "Board.h"
+#include "Game.h"
+#include "Player.h"
 
 int main() {
-	Board board;
-	
-    std::cout << "Plateau initial:" << std::endl;
-    board.displayBoard();
+	Player player1("Romain", 'X');
+	Player player2("Julen", 'O');
 
-    board.placeSymbol(0, 0, 'X');
-    board.placeSymbol(1, 1, 'O');
-    board.placeSymbol(0, 1, 'X');
-    board.placeSymbol(2, 2, 'O');
-
-    std::cout << "\nPlateau apres quelques coups:" << std::endl;
-    board.displayBoard();
-
-    char symbolAtPosition = board.getSymbol(1, 1);
-    std::cout << "\nSymbole a la position (1, 1): " << symbolAtPosition << std::endl;
-
-    bool isFull = board.isFull();
-    std::cout << "Le plateau est-il plein? " << (isFull ? "Oui" : "Non") << std::endl;
-
-    board.resetBoard();
-    std::cout << "\nPlateau après reinitialisation:" << std::endl;
-    board.displayBoard();
+	Game tictactoe(player1, player2);
+	tictactoe.start();
 
 	return 0;
 }

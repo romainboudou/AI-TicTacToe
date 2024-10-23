@@ -4,14 +4,14 @@ Board::Board(int size) : size(size), board(size, std::vector<char>(size, ' ')) {
 
 void Board::displayBoard() const {
     for (int row = 0; row < size; ++row) {
+        std::cout << " ";
         for (int col = 0; col < size; ++col) {
-            std::cout << " ";
             std::cout << board[row][col];
             if (col < size - 1) std::cout << " | ";
         }
         std::cout << std::endl;
         if (row < size - 1) {
-            std::cout << "------------";
+            std::cout << "-----------";
             std::cout << std::endl;
         }
     }
