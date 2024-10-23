@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(const Player& p1, const Player& p2) : player1(p1), player2(p2), currentPlayer(&player1) {}
+Game::Game(Player* p1, Player* p2) : player1(p1), player2(p2), currentPlayer(player1) {}
 
 bool Game::checkWin(char symbol) const {
     for (int row = 0; row < 3; ++row) {
@@ -36,25 +36,22 @@ bool Game::checkDraw() const {
 void Game::start() {
     while (true) {
         board.displayBoard();
-        int row, col;
-        std::cout << currentPlayer->getName() << " entre la ligne et la colonne (0 a 2) : ";
-        std::cin >> row >> col;
         
-        if (board.placeSymbol(row, col, currentPlayer->getSymbol())) {
-            if (checkWin(currentPlayer->getSymbol())) {
-                std::cout << currentPlayer->getName() << " win !" << std::endl;
-                board.displayBoard();
-                break;
-            }
-            if (checkDraw()) {
-                std::cout << "C'est un match nul !" << std::endl;
-                board.displayBoard();
-                break;
-            }
-            currentPlayer = (currentPlayer == &player1) ? &player2 : &player1;
+        std::pair<int, int> move = currentPlayer->chooseMove(board);
+        board.placeSymbol(move.first, move.second, currentPlayer->getSymbol());
+
+        if (checkWin(currentPlayer->getSymbol())) {
+            std::cout << currentPlayer->getName() << " a gagne ! " << std::endl;
+            board.displayBoard();
+            break;
         }
-        else {
-            std::cout << "Emplacement invalide. Reessayez." << std::endl;
+
+        if (checkDraw()) {
+            std::cout << "C'est un match nul ! " << std::endl;
+            board.displayBoard();
+            break;
         }
+
+        currentPlayer = (currentPlayer == player1) ? player2 : player1;
     }
 }

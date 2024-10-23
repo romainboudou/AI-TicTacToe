@@ -14,6 +14,7 @@ public:
     void displayBoard() const;
     bool placeSymbol(int row, int col, char symbol);
     char getSymbol(int row, int col) const;
+    void resetSymbol(int row, int col);
     void resetBoard();
     bool isFull() const; 
 };

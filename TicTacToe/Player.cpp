@@ -9,3 +9,8 @@ std::string Player::getName() const {
 char Player::getSymbol() const {
 	return symbol;
 }
+
+std::pair<int, int> Player::chooseMove(const Board& board)
+{
+	return std::pair<int, int>();
+}

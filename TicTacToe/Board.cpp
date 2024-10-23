@@ -32,6 +32,11 @@ char Board::getSymbol(int row, int col) const {
     return ' ';
 }
 
+void Board::resetSymbol(int row, int col) {
+    board[row][col] = ' ';
+}
+
+
 void Board::resetBoard() {
     for (int row = 0; row < size; ++row) {
         for (int col = 0; col < size; ++col) {
