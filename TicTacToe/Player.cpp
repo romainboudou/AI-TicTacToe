@@ -12,5 +12,5 @@ char Player::getSymbol() const {
 
 std::pair<int, int> Player::chooseMove(const Board& board)
 {
-	return std::pair<int, int>();
+	return { -1, -1 }; //Le mouvement n'est pas valide par défaut
 }

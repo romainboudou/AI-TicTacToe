@@ -95,5 +95,8 @@ std::pair<int, int> AIPlayer::chooseMove(const Board& board) {
             }
         }
     }
+
+    std::cout << getName() << " a joue." << std::endl;
+
     return bestMove;
 }
