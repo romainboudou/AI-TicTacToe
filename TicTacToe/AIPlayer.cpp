@@ -32,6 +32,8 @@ bool AIPlayer::checkWin(const Board& board, char symbol) const {
 
 // Minimax avec élagage alpha-bêta
 int AIPlayer::minmax(Board board, int depth, bool isMaximizing, char symbol, char opponentSymbol, int alpha, int beta) {
+    calculs++;
+    
     if (checkWin(board, symbol)) {
         return 10 - depth; // IA gagne
     }
@@ -95,7 +97,7 @@ std::pair<int, int> AIPlayer::chooseMove(const Board& board) {
             }
         }
     }
-
+    std::cout << "(Nombre de calculs : " << calculs << ")" << std::endl;
     std::cout << getName() << " a joue." << std::endl;
 
     return bestMove;

@@ -7,6 +7,7 @@ class AIPlayer : public Player {
 private:
 	int minmax(Board board, int depth, bool isMaximizing, char symbol, char opponentSymbol, int alpha, int beta);
 	bool checkWin(const Board& board, char symbol) const;
+	int calculs = 0;
 
 public: 
 	AIPlayer(const std::string& name, char symbol);
