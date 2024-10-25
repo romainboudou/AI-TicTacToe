@@ -32,8 +32,6 @@ bool AIPlayer::checkWin(const Board& board, char symbol) const {
 
 // Minimax avec élagage alpha-bêta
 int AIPlayer::minmax(Board board, int depth, bool isMaximizing, char symbol, char opponentSymbol, int alpha, int beta) {
-    calculs++;
-    
     if (checkWin(board, symbol)) {
         return 10 - depth; // IA gagne
     }
@@ -43,6 +41,8 @@ int AIPlayer::minmax(Board board, int depth, bool isMaximizing, char symbol, cha
     if (board.isFull()) {
         return 0; // Match nul
     }
+
+    calculs++;
 
     if (isMaximizing) {
         int bestValue = std::numeric_limits<int>::min();
